@@ -1,4 +1,4 @@
-# Day 3: Binary Diagnostic - break
+# Day 3: Binary Diagnostic
 
 import fileinput
 
