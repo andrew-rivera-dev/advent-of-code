@@ -1,4 +1,4 @@
-# Day 2: Submarine position
+# Day 2: Dive!
 
 import fileinput
 
