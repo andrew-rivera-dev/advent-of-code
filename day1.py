@@ -1,4 +1,4 @@
-# Day 1: Sonar Sweep
+# Day 1: How many measurements are larger than the previous measurement?
 
 import fileinput
 
