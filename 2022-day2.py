@@ -1,44 +1,46 @@
 import fileinput
 
-def convertMove(xyz):
-    if xyz == "X":
-        return "A"
-    if xyz == "Y":
-        return "B"
-    return "C"
+winningMove = {
+    "A": "B",
+    "B": "C",
+    "C": "A"
+}
 
-def calculateScore(moveSet):
-    [opp, me] = moveSet
+losingMove = {
+    "A": "C",
+    "B": "A",
+    "C": "B"
+}
+
+bonus = {
+    "A": 1,
+    "B": 2,
+    "C": 3
+}
+
+def moveToPlay(opp, strategy):
+    if strategy == "X":
+        return losingMove[opp]
+    elif strategy == "Y":
+        return opp
+    else:
+        return winningMove[opp]
+
+def calculateScore(moveWithStrategy):
+    [move, strategy] = moveWithStrategy
     score = 0
-    if opp == me:
-        score = 3
-    
-    match opp:
-        case "A":
-            if me == "B":
-                score = 6
-        case "B":
-            if me == "C":
-                score = 6
-        case "C":
-            if me == "A":
-                score = 6
-    
-    return score + calculateBonus(me)
 
-def calculateBonus(move):
-    if move == "A":
-        return 1
-    elif move == "B":
-        return 2
-    return 3
+    if strategy == "Y":
+        score = 3
+    elif strategy == "Z":
+        score = 6
+    
+    return score + bonus[moveToPlay(move, strategy)]
     
 score = 0
 
 for line in fileinput.input(files ='2022-day2-data.txt'):
-    moveSet = line.rstrip().split(" ")
-    moveSet[1] = convertMove(moveSet[1])
-    score += calculateScore(moveSet)
+    moveWithStrategy = line.rstrip().split(" ")
+    score += calculateScore(moveWithStrategy)
 
 print(score)
-
