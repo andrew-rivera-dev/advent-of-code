@@ -6,17 +6,17 @@ itemTypes = string.ascii_lowercase + string.ascii_uppercase
 def calculatePriority(itemType):
     return itemTypes.index(itemType) + 1
 
-def findCommonItemType(c1, c2):
-    return list(set(c1).intersection(set(c2)))[0]
+def findCommonItemType(c1, c2, c3):
+    return list(set(c1).intersection(set(c2)).intersection(set(c3)))[0]
 
 total = 0
+rucksackGroup = []
 
 for line in fileinput.input(files ='2022-day3-data.txt'):
-    clean = line.rstrip()
-    leftsplit = len(clean) // 2 - 1
-    compartment1 = line[0:leftsplit+1]
-    compartment2 = line[leftsplit+1:]
-    commonItemType = findCommonItemType(compartment1, compartment2)
-    total += calculatePriority(commonItemType)
+    rucksackGroup.append(line.rstrip())
+    if len(rucksackGroup) == 3:
+        commonItemType = findCommonItemType(rucksackGroup[0], rucksackGroup[1], rucksackGroup[2])
+        total += calculatePriority(commonItemType)
+        rucksackGroup = []
 
 print(total)
