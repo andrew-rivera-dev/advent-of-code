@@ -12,7 +12,7 @@ def findCommonItemType(c1, c2, c3):
 total = 0
 rucksackGroup = []
 
-for line in fileinput.input(files ='2022-day3-data.txt'):
+for line in fileinput.input(files = '2022/day3-data.txt'):
     rucksackGroup.append(line.rstrip())
     if len(rucksackGroup) == 3:
         commonItemType = findCommonItemType(rucksackGroup[0], rucksackGroup[1], rucksackGroup[2])

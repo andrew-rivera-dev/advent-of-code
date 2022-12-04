@@ -39,7 +39,7 @@ def calculateScore(moveWithStrategy):
     
 score = 0
 
-for line in fileinput.input(files ='2022-day2-data.txt'):
+for line in fileinput.input(files ='2022/day2-data.txt'):
     moveWithStrategy = line.rstrip().split(" ")
     score += calculateScore(moveWithStrategy)
 
