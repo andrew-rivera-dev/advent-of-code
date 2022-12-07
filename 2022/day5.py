@@ -1,4 +1,5 @@
 import fileinput 
+from collections import deque
 
 input = [
     ["G", "T", "R", "W"],
@@ -19,9 +20,11 @@ for line in fileinput.input(files='2022/day5-data.txt'):
     destination = destination - 1
 
     i = min(quantity, len(input[source]))
+    crates_to_move = input[source][-i:]
+    input[destination] = input[destination] + crates_to_move
+
     while i > 0:
-        crate = input[source].pop()
-        input[destination].append(crate)
+        input[source].pop()
         i -= 1
 
 final = []
