@@ -40,12 +40,12 @@ def filterDigits(line):
     
     return result
 
-calibrationArr = []
+calibrations = []
 
 for line in fileinput.input(files ='2023/day1/input.txt'):
     digits = filterDigits(line)
     first = digits[0]
     second = digits[-1]
-    calibrationArr.append(int(first + second))
+    calibrations.append(int(first + second))
 
-print(sum(calibrationArr))
+print(sum(calibrations))
